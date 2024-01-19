@@ -1,47 +1,22 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="container">
+<h1 class="text-center">Hello Pinia</h1>
+    <h2 class="text-center">{{counterApp.counter}}</h2>
+<div class="text-center">
+  <button @click="counterApp.increment"  class="btn m-2 btn-primary">increm</button>
+  <button  @click="counterApp.decrement" class="btn btn-danger">decrem</button></div>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script setup>
+import { useCounterStore} from "@/stores/counter.js";
+const counterApp = useCounterStore()
+console.log(counterApp.counter)
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+</script>
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+<style  scoped>
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
